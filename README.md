@@ -28,7 +28,7 @@ npm install nothis
 Basic JavaScript object
 
 ```javascript
-// GROSS: this
+// 😞 GROSS: this
 const cat = {
   sound: 'meow',
   speak: function() {
@@ -52,7 +52,7 @@ const cat = {
 Arrow functions with `this` won't work. But with `nothis` you can still access the context.
 
 ```javascript
-// GROSS: this
+// 😞 GROSS: this
 const cat = {
   sound: 'meow',
   speak: () => this.sound
@@ -85,7 +85,7 @@ cat.speak('!')
 Easily know what your context is.
 
 ```javascript
-// GROSS: this
+// 😞 GROSS: this
 const cat = {
   sound: 'meow',
   speak: function() {
@@ -123,7 +123,7 @@ cat.crazy()
 3rd party libraries sometimes require you to use `this`. F that.
 
 ```javascript
-// GROSS: this
+// 😞 GROSS: this
 $('p').on('click', function() {
   console.log($(this).text())
 })
@@ -154,7 +154,7 @@ events.emit('button.click')
 Sometimes `this` will get rebound to another context when you least expect it. Consider this example.
 
 ```javascript
-// GROSS: this
+// 😞 GROSS: this
 const cat = {
   sound: 'meow',
   speak: function() {
