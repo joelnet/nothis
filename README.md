@@ -143,10 +143,60 @@ events.on('button.*', function() {
   console.log('event:', this.event)
 })
 
-// 🔥 LIT: nothis
+// 🔥 LIT: nothis + destructuring!
 events.on('button.*', nothis(({ event }) => console.log('event', event)))
 
 events.emit('button.click')
+```
+
+### Example 6: React
+
+Restore some sanity to React components!
+
+Stop writing code like this:
+
+```javascript
+class Counter extends React.Component {
+  constructor() {
+    // 😞 GROSS: this
+    this.increment = this.increment.bind(this)
+  }
+
+  increment() {
+    // 😞 GROSS: this
+    this.setState(s => ({ count: s.count + 1 }))
+  }
+
+  render() {
+    return (
+      <div>
+        <!-- 😞 GROSS: this -->
+        <button onClick={() => this.increment}>{this.state.count}</button>
+
+        <!-- 😞 GROSS: this EVEN WORSE! -->
+        <button onClick={this.increment.bind(this)}>{this.state.count}</button>
+      </div>
+    )
+  })
+}
+```
+
+instead you can write code like this:
+
+```javascript
+class Counter extends React.Component {
+  state = { count: 0 }
+
+  // 🔥 LIT: nothis + destructuring!
+  increment = nothis(({ setState }) => setState(s => ({ count: s.count + 1 })))
+
+  // 🔥 LIT: nothis + destructuring!
+  render = nothis(({ increment, state: { count } }) => (
+    <div>
+      <button onClick={increment}>{count}</button>
+    </div>
+  ))
+}
 ```
 
 ## fixthis(object)
