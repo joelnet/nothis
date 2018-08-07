@@ -1,6 +1,6 @@
 const clone = require('lodash.clone')
-const uniq = require('lodash.uniq')
 const isFunction = require('./utils/isFunction')
+const getAllkeys = require('./utils/getAllKeys')
 
 const selfBind = (obj, key) => {
   obj[key] = obj[key].bind(obj)
@@ -10,10 +10,6 @@ const selfBind = (obj, key) => {
 const selfBindReducer = (acc, key) =>
   isFunction(acc[key]) ? selfBind(acc, key) : acc
 
-const fixthis = obj => {
-  const methods = Object.getOwnPropertyNames(Object.getPrototypeOf(obj))
-  const keys = Object.keys(obj)
-  return uniq(methods.concat(keys)).reduce(selfBindReducer, clone(obj))
-}
+const fixthis = obj => getAllkeys(obj).reduce(selfBindReducer, clone(obj))
 
 module.exports = fixthis
