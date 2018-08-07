@@ -36,7 +36,7 @@ const cat = {
   }
 }
 
-// LIT: nothis
+// 🔥 LIT: nothis
 import nothis from 'nothis'
 
 const cat = {
@@ -60,7 +60,7 @@ const cat = {
 cat.speak()
 //=> undefined
 
-// LIT: nothis
+// 🔥 LIT: nothis
 const cat = {
   sound: 'meow',
   speak: nothis(ctx => ctx.sound)
@@ -100,7 +100,7 @@ const cat = {
 cat.speak()
 //=> Error: this.speak is not a function
 
-// LIT: nothis
+// 🔥 LIT: nothis
 const cat = {
   sound: 'meow',
   speak: function() {
@@ -128,7 +128,7 @@ $('p').on('click', function() {
   console.log($(this).text())
 })
 
-// LIT: nothis
+// 🔥 LIT: nothis
 $('p').on('click', nothis(ctx => console.log($(ctx).text())))
 ```
 
@@ -143,7 +143,7 @@ events.on('button.*', function() {
   console.log('event:', this.event)
 })
 
-// LIT: nothis
+// 🔥 LIT: nothis
 events.on('button.*', nothis(({ event }) => console.log('event', event)))
 
 events.emit('button.click')
@@ -170,7 +170,7 @@ meow()
 You can prevent this from happening by using `fixthis`.
 
 ```javascript
-// LIT: fixthis
+// 🔥 LIT: fixthis
 
 const cat = fixthis({
   sound: 'meow',
