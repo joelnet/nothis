@@ -6,9 +6,9 @@ The complete elimination and eradication of JavaScript's _this_.
 
 If _this_ is so difficult to reason about, why don't we just stop using it? Seriously. Why. don't. we. just. stop. using. it.?
 
-When a function is decorated with the `nothis` function decorator it will pass `this` as the first argument. [More on function decorators](https://dev.to/joelnet/function-decorators-part-2-javascript-4km9).
+When a function is decorated with the `nothis` function decorator it will pass `this` as the first argument. [Read more on function decorators here](https://dev.to/joelnet/function-decorators-part-2-javascript-4km9).
 
-Now you can remove all those `var self = this` lines!
+Now you can remove all those annoying `var self = this` lines as they are now completely unnecessary!
 
 ## Installation
 
