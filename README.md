@@ -21,7 +21,7 @@ npm install nothis
 - `nothis` - passes `this` as an argument.
 - `fixthis` - Prevents the rebinding of `this`.
 
-## nothis
+## nothis(function)
 
 ### Example 1: Basics
 
@@ -149,7 +149,7 @@ events.on('button.*', nothis(({ event }) => console.log('event', event)))
 events.emit('button.click')
 ```
 
-## fixthis
+## fixthis(object)
 
 Sometimes `this` will get rebound to another context when you least expect it. Consider this example.
 
