@@ -4,7 +4,7 @@ The complete elimination and eradication of JavaScript's _this_.
 
 ![Tombstone - this 1995-2018](assets/headstone.png)
 
-If _this_ is so difficult to reason about, why don't we just stop using it? Seriously. Why don't we just stop using it?
+If _this_ is so difficult to reason about, why don't we just stop using it? Seriously. Why. don't. we. just. stop. using. it.?
 
 When a function is decorated by the `nothis` function decorator it will pass `this` as the first argument.
 
