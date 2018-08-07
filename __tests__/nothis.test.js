@@ -1,44 +1,47 @@
 const nothis = require('../nothis')
 
 describe('nothis', () => {
-  function whoami() {
-    return this
+  const context = {
+    test: 'success',
+    whoami: function whoami() {
+      return this
+    },
+    whoamiNoThis: nothis(function whoami(context) {
+      return context
+    }),
+    whoamiEs6: nothis(context => context)
   }
 
-  const whoamiNoThis = nothis(function whoami(context) {
-    return context
-  })
-
-  const whoamiEs6 = nothis(context => context)
-
   test('this is not changed', () => {
-    const expected = whoami()
-    const actual = nothis(whoami)()
+    const expected = 'success'
+    const actual = context.whoamiNoThis().test
     expect(actual).toBe(expected)
   })
 
   test('nothis works with arrow function', () => {
-    const expected = whoami()
-    const actual = whoamiEs6()
+    const expected = 'success'
+    const actual = context.whoamiEs6().test
     expect(actual).toBe(expected)
   })
 
   test('this becomes first argument', () => {
-    const expected = whoami()
-    const actual = whoamiNoThis()
+    const expected = 'success'
+    const actual = context.whoamiNoThis().test
     expect(actual).toBe(expected)
   })
 
-  test('this behaves the same when this is unset', () => {
-    const expected = (0, whoami)()
-    const actual = (0, whoamiNoThis)()
-    expect(actual).toBe(expected)
-  })
-
-  test('this behaves the same when changed', () => {
-    const context = {}
-    const expected = whoami.call(context)
-    const actual = whoamiNoThis.call(context)
+  test('methods on context cannot be rebound', () => {
+    const expected = 'success'
+    const myComponent = {
+      state: 'success',
+      handler: function() {
+        return this.state
+      },
+      render: nothis(ctx => {
+        return ctx.handler.call({})
+      })
+    }
+    const actual = myComponent.render()
     expect(actual).toBe(expected)
   })
 

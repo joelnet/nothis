@@ -1,8 +1,10 @@
+const fixthis = require('./fixthis')
+
 const nothis = func =>
   function nothis_() {
     return func.apply(
       this,
-      [this].concat(Array.prototype.slice.call(arguments))
+      [fixthis(this)].concat(Array.prototype.slice.call(arguments))
     )
   }
 
