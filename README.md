@@ -138,7 +138,7 @@ You can also use parameter destructuring in ES6 arrow functions.
 import { EventEmitter2 } from 'eventemitter2'
 const events = new EventEmitter2({ wildcard: true })
 
-// GROSS: this
+// 😞 GROSS: this
 events.on('button.*', function() {
   console.log('event:', this.event)
 })
