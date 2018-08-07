@@ -171,6 +171,7 @@ You can prevent this from happening by using `fixthis`.
 
 ```javascript
 // 🔥 LIT: fixthis
+import fixthis from 'nothis/fixthis'
 
 const cat = fixthis({
   sound: 'meow',
