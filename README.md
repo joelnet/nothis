@@ -66,7 +66,7 @@ const cat = {
   speak: nothis(ctx => ctx.sound)
 }
 cat.speak()
-/=> "meow"
+//=> "meow"
 ```
 
 ### Example 3: Multiple arguments
