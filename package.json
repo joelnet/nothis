@@ -6,6 +6,7 @@
   "license": "MIT",
   "main": "nothis.js",
   "scripts": {
+    "lint": "eslint .",
     "test": "jest ."
   },
   "devDependencies": {
@@ -36,6 +37,7 @@
     }
   },
   "prettier": {
-    "semi": false
+    "semi": false,
+    "singleQuote": true
   }
 }

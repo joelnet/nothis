@@ -1,29 +1,29 @@
-const fixthis = require("../fixthis")
+const fixthis = require('../fixthis')
 
-describe("fixthis", () => {
+describe('fixthis', () => {
   const cat = {
-    sound: "meow",
+    sound: 'meow',
     speak: function() {
       return this.sound
     }
   }
 
-  test("does not modify source", () => {
+  test('does not modify source', () => {
     const expected = cat.speak
     fixthis(cat)
     const actual = cat.speak
     expect(actual).toBe(expected)
   })
 
-  test("method will not rebind", () => {
-    const expected = "meow"
+  test('method will not rebind', () => {
+    const expected = 'meow'
     const fixedCat = fixthis(cat)
-    const actual = fixedCat.speak.call({ sound: "woof" })
+    const actual = fixedCat.speak.call({ sound: 'woof' })
     expect(actual).toBe(expected)
   })
 
-  test("method will not lose context", () => {
-    const expected = "meow"
+  test('method will not lose context', () => {
+    const expected = 'meow'
     const fixedCat = fixthis(cat)
     const speak = fixedCat.speak
     const actual = speak()
