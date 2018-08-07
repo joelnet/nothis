@@ -80,7 +80,7 @@ cat.speak('!')
 // => "meow!"
 ```
 
-### Example 3: Clarity
+### Example 4: Clarity
 
 Easily know what your context is.
 
@@ -118,7 +118,7 @@ cat.crazy()
 // => "meow"
 ```
 
-### Example 4: 3rd Party Libraries
+### Example 5: 3rd Party Libraries
 
 3rd party libraries sometimes require you to use `this`. F that.
 
@@ -183,4 +183,44 @@ const speak = cat.speak
 
 speak()
 // => "meow"
+```
+
+### ES6 Classes
+
+Classes won't save you from the problems of `this`.
+
+```javascript
+// 😞 GROSS: this
+class Cat {
+  constructor() {
+    this.sound = 'meow'
+  }
+  speak() {
+    return this.sound
+  }
+}
+
+const cat = new Cat()
+const speak = cat.speak
+speak()
+// => Cannot read property 'sound' of undefined
+```
+
+You still can `fixthis` it.
+
+```javascript
+// 🔥 LIT: fixthis
+class Cat {
+  constructor() {
+    this.sound = 'meow'
+  }
+  speak() {
+    return this.sound
+  }
+}
+
+const cat = fixthis(new Cat())
+const speak = cat.speak
+speak()
+//=> "meow"
 ```

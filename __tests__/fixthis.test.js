@@ -1,6 +1,15 @@
 const fixthis = require('../fixthis')
 
 describe('fixthis', () => {
+  class Cat {
+    constructor() {
+      this.sound = 'meow'
+    }
+    speak() {
+      return this.sound
+    }
+  }
+
   const cat = {
     sound: 'meow',
     speak: function() {
@@ -26,6 +35,14 @@ describe('fixthis', () => {
     const expected = 'meow'
     const fixedCat = fixthis(cat)
     const speak = fixedCat.speak
+    const actual = speak()
+    expect(actual).toBe(expected)
+  })
+
+  test('works with classes', () => {
+    const expected = 'meow'
+    const meowCat = fixthis(new Cat())
+    const speak = meowCat.speak
     const actual = speak()
     expect(actual).toBe(expected)
   })

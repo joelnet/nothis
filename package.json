@@ -1,6 +1,6 @@
 {
   "name": "nothis",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "",
   "author": "Joel Thoms",
   "license": "MIT",
@@ -8,6 +8,10 @@
   "scripts": {
     "lint": "eslint .",
     "test": "jest ."
+  },
+  "dependencies": {
+    "lodash.clone": "^4.5.0",
+    "lodash.uniq": "^4.5.0"
   },
   "devDependencies": {
     "eslint": "^5.1.0",
