@@ -2,7 +2,7 @@
 
 The complete elimination and eradication of JavaScript's _this_.
 
-![Tombstone - this 1995-2018](https://github.com/joelnet/nothis/raw/master/assets/headstone.png)
+![Tombstone - this 1995-2018](https://github.com/joelnet/nothis/raw/master/assets/headstone-212x250.png)
 
 If _this_ is so difficult to reason about, why don't we just stop using it? Seriously. **Why. don't. we. just. stop. using. it.**?
 
