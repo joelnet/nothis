@@ -20,7 +20,7 @@ npm install nothis
 
 - `nothis` - passes `this` as an argument.
 - `fixthis` - Prevents the rebinding of `this`.
-- `nothisReact` - Prevents the rebinding of `this` for React.
+- `nothisAll` - Prevents the rebinding of `this` for React.
 
 ## nothis :: function -> function
 
@@ -232,7 +232,7 @@ Apply `fixthisReact` to your React component and never have to use `this` again!
 
 ```javascript
 import React from 'react'
-import nothisReact from 'nothis/nothisReact'
+import nothisAll from 'nothis/nothisAll'
 
 // 🔥 LIT: no this in sight!
 class Counter extends React.Component {
@@ -240,7 +240,7 @@ class Counter extends React.Component {
 
   constructor() {
     super()
-    nothisReact(this)
+    nothisAll(this)
   }
 
   increment({ setState }) {

@@ -1,3 +1,6 @@
+__mocks__/
 __tests__/
 .vscode/
 assets/
+coverage/
+.gitignore

@@ -1,12 +1,12 @@
 const React = require('react')
-const nothisReact = require('../nothisReact')
+const nothisAll = require('../nothisAll')
 
 class Counter extends React.Component {
   state = { count: 0 }
 
   constructor() {
     super()
-    nothisReact(this)
+    nothisAll(this)
   }
 
   increment({ setState }) {
