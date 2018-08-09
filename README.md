@@ -20,8 +20,9 @@ npm install nothis
 
 - `nothis` - passes `this` as an argument.
 - `fixthis` - Prevents the rebinding of `this`.
+- `nothisReact` - Prevents the rebinding of `this` for React.
 
-## nothis(function)
+## nothis :: function -> function
 
 ### Example 1: Basics
 
@@ -149,57 +150,7 @@ events.on('button.*', nothis(({ event }) => console.log('event', event)))
 events.emit('button.click')
 ```
 
-### Example 6: React
-
-Restore some sanity to React components!
-
-Stop writing code like this:
-
-```javascript
-class Counter extends React.Component {
-  constructor() {
-    // 😞 GROSS: this
-    this.increment = this.increment.bind(this)
-  }
-
-  increment() {
-    // 😞 GROSS: this
-    this.setState(s => ({ count: s.count + 1 }))
-  }
-
-  render() {
-    return (
-      <div>
-        <!-- 😞 GROSS: this -->
-        <button onClick={() => this.increment}>{this.state.count}</button>
-
-        <!-- 😞 GROSS: this EVEN WORSE! -->
-        <button onClick={this.increment.bind(this)}>{this.state.count}</button>
-      </div>
-    )
-  })
-}
-```
-
-instead you can write code like this:
-
-```javascript
-class Counter extends React.Component {
-  state = { count: 0 }
-
-  // 🔥 LIT: nothis + destructuring!
-  increment = nothis(({ setState }) => setState(s => ({ count: s.count + 1 })))
-
-  // 🔥 LIT: nothis + destructuring!
-  render = nothis(({ increment, state: { count } }) => (
-    <div>
-      <button onClick={increment}>{count}</button>
-    </div>
-  ))
-}
-```
-
-## fixthis(object)
+## fixthis :: object -> object
 
 Sometimes `this` will get rebound to another context when you least expect it. Consider this example.
 
@@ -273,4 +224,35 @@ const cat = fixthis(new Cat())
 const speak = cat.speak
 speak()
 //=> "meow"
+```
+
+## fixthisReact :: object -> void
+
+Apply `fixthisReact` to your React component and never have to use `this` again!
+
+```javascript
+import React from 'react'
+import nothisReact from 'nothis/nothisReact'
+
+// 🔥 LIT: no this in sight!
+class Counter extends React.Component {
+  state = { count: 0 }
+
+  constructor() {
+    super()
+    nothisReact(this)
+  }
+
+  increment({ setState }) {
+    setState(({ count }) => ({ count: count + 1 }))
+  }
+
+  render({ increment, state }) {
+    return (
+      <div>
+        <button onClick={increment}>{state.count}</button>
+      </div>
+    )
+  }
+}
 ```

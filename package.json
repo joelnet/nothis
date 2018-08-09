@@ -1,30 +1,56 @@
 {
   "name": "nothis",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "",
   "author": "Joel Thoms",
   "license": "MIT",
   "main": "nothis.js",
   "scripts": {
+    "clean": "rimraf coverage",
     "lint": "eslint .",
-    "test": "jest ."
+    "test": "jest"
   },
   "dependencies": {
     "lodash.clone": "^4.5.0"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.2.6",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "enzyme": "^3.4.1",
+    "enzyme-adapter-react-16": "^1.2.0",
     "eslint": "^5.1.0",
     "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-babel": "^5.1.0",
     "eslint-plugin-prettier": "^2.6.2",
+    "eslint-plugin-react": "^7.10.0",
     "jest": "^23.4.2",
-    "prettier": "^1.14.0"
+    "prettier": "^1.14.0",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "rimraf": "^2.6.2"
+  },
+  "babel": {
+    "presets": [
+      "react"
+    ],
+    "plugins": [
+      "transform-class-properties"
+    ]
   },
   "jest": {
-    "testURL": "http://localhost"
+    "testURL": "http://localhost",
+    "setupFiles": [
+      "<rootDir>/lib/setupTests.js"
+    ]
   },
   "eslintConfig": {
+    "parser": "babel-eslint",
     "plugins": [
-      "prettier"
+      "babel",
+      "prettier",
+      "react"
     ],
     "env": {
       "jest": true
@@ -32,13 +58,25 @@
     "rules": {
       "prettier/prettier": "error"
     },
+    "overrides": {
+      "files": [
+        "__tests/**/*.test.js"
+      ]
+    },
     "extends": [
       "plugin:prettier/recommended"
     ],
     "parserOptions": {
-      "ecmaVersion": 6
+      "ecmaVersion": 2017,
+      "modules": true,
+      "ecmaFeatures": {
+        "jsx": true
+      }
     }
   },
+  "eslintIgnore": [
+    "coverage"
+  ],
   "prettier": {
     "semi": false,
     "singleQuote": true
