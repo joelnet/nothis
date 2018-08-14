@@ -1,3 +1,3 @@
-const isFunction = func => (typeof func === 'function' ? true : false)
+const isFunction = func => typeof func === 'function'
 
 module.exports = isFunction
