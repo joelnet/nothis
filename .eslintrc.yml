@@ -1,0 +1,20 @@
+---
+parser: babel-eslint
+plugins:
+  - babel
+  - prettier
+  - react
+env:
+  jest: true
+overrides:
+  files:
+    - __tests/**/*.test.js
+extends:
+  - plugin:prettier/recommended
+parserOptions:
+  ecmaVersion: 2017
+  modules: true
+  ecmaFeatures:
+    jsx: true
+rules:
+  prettier/prettier: error

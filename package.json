@@ -1,6 +1,6 @@
 {
   "name": "nothis",
-  "version": "1.2.2",
+  "version": "1.3.0",
   "description": "",
   "author": "Joel Thoms",
   "license": "MIT",
@@ -24,6 +24,7 @@
     "babel-cli": "^6.26.0",
     "babel-eslint": "^10.0.1",
     "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-decorators-legacy": "^1.3.5",
     "babel-preset-react": "^6.24.1",
     "cz-conventional-changelog": "^2.1.0",
     "enzyme": "^3.7.0",
@@ -38,14 +39,14 @@
     "prettier": "^1.15.1",
     "react": "^16.6.1",
     "react-dom": "^16.6.1",
-    "rimraf": "^2.6.2",
-    "semantic-release": "^15.13.3"
+    "rimraf": "^2.6.2"
   },
   "babel": {
     "presets": [
       "react"
     ],
     "plugins": [
+      "transform-decorators-legacy",
       "transform-class-properties"
     ]
   },
@@ -54,35 +55,6 @@
     "setupFiles": [
       "<rootDir>/lib/setupTests.js"
     ]
-  },
-  "eslintConfig": {
-    "parser": "babel-eslint",
-    "plugins": [
-      "babel",
-      "prettier",
-      "react"
-    ],
-    "env": {
-      "jest": true
-    },
-    "rules": {
-      "prettier/prettier": "error"
-    },
-    "overrides": {
-      "files": [
-        "__tests/**/*.test.js"
-      ]
-    },
-    "extends": [
-      "plugin:prettier/recommended"
-    ],
-    "parserOptions": {
-      "ecmaVersion": 2017,
-      "modules": true,
-      "ecmaFeatures": {
-        "jsx": true
-      }
-    }
   },
   "eslintIgnore": [
     "coverage"
