@@ -7,6 +7,7 @@
   "main": "nothis.js",
   "scripts": {
     "clean": "rimraf coverage",
+    "commit": "npx git-cz",
     "lint": "eslint .",
     "test": "jest"
   },
@@ -14,10 +15,13 @@
     "lodash.clone": "^4.5.0"
   },
   "devDependencies": {
+    "@commitlint/cli": "^7.3.2",
+    "@commitlint/config-conventional": "^7.3.1",
     "babel-cli": "^6.26.0",
     "babel-eslint": "^10.0.1",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-react": "^6.24.1",
+    "cz-conventional-changelog": "^2.1.0",
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.6.0",
     "eslint": "^5.8.0",
@@ -25,6 +29,7 @@
     "eslint-plugin-babel": "^5.2.1",
     "eslint-plugin-prettier": "^3.0.0",
     "eslint-plugin-react": "^7.11.1",
+    "husky": "^1.3.1",
     "jest": "^23.6.0",
     "prettier": "^1.15.1",
     "react": "^16.6.1",
@@ -80,5 +85,15 @@
   "prettier": {
     "semi": false,
     "singleQuote": true
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
   }
 }
