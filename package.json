@@ -5,6 +5,10 @@
   "author": "Joel Thoms",
   "license": "MIT",
   "main": "nothis.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/joelnet/nothis.git"
+  },
   "scripts": {
     "clean": "rimraf coverage",
     "commit": "npx git-cz",
@@ -34,7 +38,8 @@
     "prettier": "^1.15.1",
     "react": "^16.6.1",
     "react-dom": "^16.6.1",
-    "rimraf": "^2.6.2"
+    "rimraf": "^2.6.2",
+    "semantic-release": "^15.13.3"
   },
   "babel": {
     "presets": [
