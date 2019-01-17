@@ -2,5 +2,7 @@ __mocks__/
 __tests__/
 .vscode/
 assets/
+lib/
 coverage/
 .gitignore
+commitlint.config.js
