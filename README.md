@@ -18,7 +18,7 @@ npm install nothis
 
 ## Functions
 
-- `decorator` - @nothis function decorator.
+- `decorator` - @context function decorator for Class functions.
 - `nothis` - passes `this` as an argument.
 - `fixthis` - Prevents the rebinding of `this`.
 - `nothisAll` - Prevents the rebinding of `this` for React.
