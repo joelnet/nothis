@@ -34,9 +34,9 @@ const decorateFunction = (property, descriptor) => {
 const isArrow = descriptor => typeof descriptor.initializer === 'function'
 const isFunction = descriptor => typeof descriptor.value === 'function'
 
-const nothisDecorator = (target, property, descriptor) => {
+const contextDecorator = (target, property, descriptor) => {
   if (isArrow(descriptor)) decorateArrow(property, descriptor)
   if (isFunction(descriptor)) decorateFunction(property, descriptor)
 }
 
-module.exports = nothisDecorator
+module.exports = contextDecorator
