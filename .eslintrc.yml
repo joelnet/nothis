@@ -7,8 +7,7 @@ plugins:
 env:
   jest: true
 overrides:
-  files:
-    - __tests/**/*.test.js
+  - { files: '__tests/**/*.test.js' }
 extends:
   - plugin:prettier/recommended
 parserOptions:
