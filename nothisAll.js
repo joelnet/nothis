@@ -1,13 +1,8 @@
-const nothis = require('./nothis')
-const isFunction = require('./utils/isFunction')
+const fixThisClass = require('./fixThisClass')
 
-const exclude = ['constructor']
-
-const getKeys = obj => Object.getOwnPropertyNames(Object.getPrototypeOf(obj))
-
-const nothisAll = obj =>
-  getKeys(obj)
-    .filter(key => isFunction(obj[key]) && exclude.indexOf(key) === -1)
-    .forEach(key => (obj[key] = nothis(obj[key])))
-
-module.exports = nothisAll
+/**
+ * @deprecated `nothisAll` has been renamed to `fixThisClass`. Import
+ * `nothis/fixThisClass` instead. This alias will be removed in a future
+ * major version.
+ */
+module.exports = fixThisClass

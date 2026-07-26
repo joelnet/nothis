@@ -21,7 +21,8 @@ npm install nothis
 - `decorator` - @context function decorator for Class functions.
 - `nothis` - passes `this` as an argument.
 - `fixthis` - Prevents the rebinding of `this`.
-- `nothisAll` - Prevents the rebinding of `this` for React.
+- `fixThisClass` - Passes the instance as the first argument to all class methods. Great for React components.
+- `nothisAll` - Deprecated alias of `fixThisClass`.
 
 ## nothis :: function -> function
 
@@ -252,13 +253,13 @@ speak()
 //=> "meow"
 ```
 
-## fixthisReact :: object -> void
+## fixThisClass :: object -> void
 
-Apply `fixthisReact` to your React component and never have to use `this` again!
+Apply `fixThisClass` to your class in the constructor and never have to use `this` again! Great for React components.
 
 ```javascript
 import React from 'react'
-import nothisAll from 'nothis/nothisAll'
+import fixThisClass from 'nothis/fixThisClass'
 
 // 🔥 LIT: no this in sight!
 class Counter extends React.Component {
@@ -266,7 +267,7 @@ class Counter extends React.Component {
 
   constructor() {
     super()
-    nothisAll(this)
+    fixThisClass(this)
   }
 
   increment({ setState }) {
@@ -282,5 +283,9 @@ class Counter extends React.Component {
   }
 }
 ```
+
+> `fixThisClass` was previously named `nothisAll`. The old import
+> `nothis/nothisAll` still works but is deprecated and will be removed in a
+> future major version.
 
 ![Tombstone - this 1995-2018](https://github.com/joelnet/nothis/raw/master/assets/headstone-212x250.png)
