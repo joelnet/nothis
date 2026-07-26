@@ -10,6 +10,8 @@ When a function is decorated with the `nothis` function decorator it will pass `
 
 Now you can remove all those annoying `var self = this` lines as they are now completely unnecessary!
 
+Zero dependencies. Nothing but `nothis`.
+
 ## Installation
 
 ```bash

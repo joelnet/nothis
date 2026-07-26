@@ -1,4 +1,4 @@
-const clone = require('lodash.clone')
+const clone = require('./utils/clone')
 const isFunction = require('./utils/isFunction')
 const getAllkeys = require('./utils/getAllKeys')
 
