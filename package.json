@@ -11,7 +11,6 @@
   },
   "scripts": {
     "clean": "rimraf coverage",
-    "commit": "npx git-cz",
     "lint": "eslint .",
     "prepare": "husky",
     "test": "jest"
@@ -29,7 +28,6 @@
     "@commitlint/config-conventional": "^21.2.0",
     "@testing-library/dom": "^10.4.1",
     "@testing-library/react": "^16.3.2",
-    "cz-conventional-changelog": "^3.3.0",
     "eslint": "^9.39.5",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.6",
@@ -72,10 +70,5 @@
     "singleQuote": true,
     "trailingComma": "none",
     "arrowParens": "avoid"
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
   }
 }
