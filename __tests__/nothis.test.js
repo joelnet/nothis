@@ -34,7 +34,7 @@ describe('nothis', () => {
     const expected = 'success'
     const myComponent = {
       state: 'success',
-      handler: function() {
+      handler: function () {
         return this.state
       },
       render: nothis(ctx => {
@@ -48,7 +48,10 @@ describe('nothis', () => {
   test('this received as first argument with multiple arguments', () => {
     const func = nothis((context, a, b, c) => [context, a, b, c])
     const actual = func.call(1, 2, 3, 4)
-    expect(actual).toEqual([1, 2, 3, 4])
+    // `this` is boxed to a Number object in sloppy mode; unbox only the context
+    expect(actual[0]).toEqual(expect.any(Number))
+    expect(actual[0].valueOf()).toBe(1)
+    expect(actual.slice(1)).toEqual([2, 3, 4])
   })
 
   test('nested this has separate contexts', () => {
@@ -59,6 +62,10 @@ describe('nothis', () => {
       })
     })
     const actual = outer.call('O').call('I')
-    expect(actual).toMatchObject(expected)
+    // `this` is boxed to String objects in sloppy mode; unbox for comparison
+    expect(actual.outerContext).toEqual(expect.any(String))
+    expect(actual.innerContext).toEqual(expect.any(String))
+    expect(actual.outerContext.valueOf()).toBe(expected.outerContext)
+    expect(actual.innerContext.valueOf()).toBe(expected.innerContext)
   })
 })

@@ -12,7 +12,7 @@ describe('fixthis', () => {
 
   const cat = {
     sound: 'meow',
-    speak: function() {
+    speak: function () {
       return this.sound
     }
   }

@@ -1,12 +1,12 @@
 const React = require('react')
-const { mount } = require('enzyme')
+const { render, fireEvent } = require('@testing-library/react')
 const Counter = require('../__mocks__/Counter')
 
 describe('fixthisReact', () => {
   test('<Counter /> works with fixthisReact', () => {
-    const wrapper = mount(<Counter />)
-    const button = wrapper.find('button')
-    button.simulate('click')
-    expect(button.text()).toBe('1')
+    const { getByRole } = render(<Counter />)
+    const button = getByRole('button')
+    fireEvent.click(button)
+    expect(button.textContent).toBe('1')
   })
 })

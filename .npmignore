@@ -6,3 +6,5 @@ lib/
 coverage/
 .gitignore
 commitlint.config.js
+.husky/
+eslint.config.js
